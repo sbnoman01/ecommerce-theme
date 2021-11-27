@@ -1,5 +1,23 @@
 <?php
-// version
+
+
+// after theme setup
+function organi_sb_setup(){
+    load_theme_textdomain('organi_sb', get_template_part('/languages'));
+    
+    // common support
+    add_theme_support('title-tag');
+
+    // navigations
+    register_nav_menus(array(
+        'main-menu' => __('Main Menu', 'organi_sb'),
+        'cetagory-menu' => __('Cetagory Menu', 'organi_sb)')
+    ));
+}
+
+add_action( 'after_setup_theme', 'organi_sb_setup');
+
+// Load assests
 function organi_sb_assets(){
     // style
     wp_enqueue_style('bootstrap',  get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0.0', 'all');

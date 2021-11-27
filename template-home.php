@@ -1,3 +1,9 @@
+<?php 
+/*
+Template Name: Home page
+*/
+?>
+
 <?php get_header(); ?>
     <!-- Hero Section Begin -->
     <section class="hero">
