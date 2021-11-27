@@ -15,3 +15,26 @@ Text Domain: organi_sb
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+
+.product__item__pic__hover li a {
+	font-size: 16px !important;
+	color: #1c1c1c !important;
+	height: 40px;
+	width: 40px;
+	text-align: center;
+	border: 1px solid #ebebeb !important;
+	background: #ffffff !important;
+	display: block;
+	border-radius: 50% !important;
+	-webkit-transition: all, 0.5s;
+	-moz-transition: all, 0.5s;
+	-ms-transition: all, 0.5s;
+	-o-transition: all, 0.5s;
+	transition: all, 0.5s;
+}
+.woocommerce ul.products li.product .button {
+	/* margin-top: 1em; */
+	padding: 0 !important;
+	margin: 0 !important;
+	line-height: 40px;
+}
