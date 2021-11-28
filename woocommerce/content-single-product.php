@@ -18,21 +18,10 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
-
-/**
- * Hook: woocommerce_before_single_product.
- *
- * @hooked woocommerce_output_all_notices - 10
- */
-do_action( 'woocommerce_before_single_product' );
-
-if ( post_password_required() ) {
-	echo get_the_password_form(); // WPCS: XSS ok.
-	return;
-}
 ?>
 <section class="breadcrumb-section set-bg" data-setbg="<?= get_template_directory_uri(); ?>/img/breadcrumb.jpg" style="background-image: url(<?= get_template_directory_uri(); ?>/img/breadcrumb.jpg);">
 			<div class="container">
+                
 				<div class="row">
 					<div class="col-lg-12 text-center">
 						<div class="breadcrumb__text">
@@ -54,12 +43,25 @@ if ( post_password_required() ) {
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container">
+            <?php
+                    /**
+                     * Hook: woocommerce_before_single_product.
+                     *
+                     * @hooked woocommerce_output_all_notices - 10
+                     */
+                    do_action( 'woocommerce_before_single_product' );
+
+                    if ( post_password_required() ) {
+                        echo get_the_password_form(); // WPCS: XSS ok.
+                        return;
+                    }
+                ?>
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="img/product/details/product-details-1.jpg" alt="">
+                            <?php woocommerce_show_product_sale_flash(); ?>            
+                            <?php woocommerce_show_product_images(); ?>            
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
@@ -114,55 +116,26 @@ if ( post_password_required() ) {
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="product__details__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                    aria-selected="false">Information</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>versionelementum sed sit amet dui. Vestibulum ante ipsum primis in faucibus orci luctus
-                                        et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
-                                        vel, ullamcorper sit amet ligula. Proin eget tortor risus.</p>
-                                        <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
-                                        sed sit amet dui. Proin eget tortor risus.</p>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
-                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
-                                        nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                                
-                                        Proin eget tortor risus.</p>
-                                </div>
-                            </div>
+            </div>
+            <div class="container">
+                    
+                <div class="row">
+                    <div class="col-lg-12">
+                        <?php woocommerce_output_product_data_tabs(); ?>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 mt-3">
+                        <div class="section-title related__product__title">
+                            <h2>Related Product</h2>
+                        </div>
+                        <div class="related-product-wrap-single-page">
+                            <?php woocommerce_output_related_products(); ?>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -178,7 +151,7 @@ if ( post_password_required() ) {
 	 * @hooked woocommerce_upsell_display - 15
 	 * @hooked woocommerce_output_related_products - 20
 	 */
-	do_action( 'woocommerce_after_single_product_summary' );
+	//do_action( 'woocommerce_after_single_product_summary' );
 	?>
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>

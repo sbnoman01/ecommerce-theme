@@ -170,7 +170,10 @@ function ts_quantity_plus_minus() {
    </script>
    <?php
 }
-
+add_action('template_redirect', 'remove_shop_breadcrumbs' );
+function remove_shop_breadcrumbs(){
+    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+}
 
 ?>
 
