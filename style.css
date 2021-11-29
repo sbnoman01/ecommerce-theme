@@ -78,3 +78,23 @@ input[type=number] {
 	background-color: #fff;
 	border-color: #dee2e6 #dee2e6 #fff;
 }
+
+.shoping__cart__item .product-name{
+	font-size: 18px;
+	color: #1c1c1c;
+	display: inline-block;
+}
+.shoping__cart__item .product-img {
+	display: inline-block;
+	margin-right: 25px;
+}
+#add_payment_method table.cart img, .woocommerce-cart table.cart img, .woocommerce-checkout table.cart img {
+	width: 100px !important;
+	box-shadow: none;
+}
+.shoping__cart__price .woocommerce-Price-amount.amount {
+	font-size: 18px;
+	color: #1c1c1c;
+	font-weight: 700;
+	width: 100px;
+}
